@@ -2,3 +2,22 @@
     margin:0px;
     padding:0px;
 }
+.input-main{
+    padding:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#input-main-user{
+    width:45%;
+    padding:10px 5px;
+    text-align: center;
+    border-top:none;
+    border-left:none;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    border:1.4px solid #ff9900;
+    border-radius: 3px;
+}
+#input-main-user:focus{
+    outline:none;
+}

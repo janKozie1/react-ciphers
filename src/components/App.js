@@ -4,6 +4,18 @@ import '../styles/app.css'
 import Header from './Header'
 
 class App extends Component {
+    state = {
+        userText:''
+    }
+    onInputChange = (e) => {
+        this.setState({
+            userText:e.target.value
+        })
+    }
+    onFormSubmit = (e) => {
+        e.preventDefault();
+        alert(this.state.userText)
+    }
     componentDidMount() {
         for (let data in algorithms) {
             console.log(data)
@@ -14,9 +26,9 @@ class App extends Component {
         return (
             <div className='app'>
                 <Header />
-                <div class='input-main'>
-                    <input type='text' id='input-main-user' />
-                </div>
+                <form className='input-main' onSubmit={this.onFormSubmit}>
+                    <input type='text' id='input-main-user' value={this.state.userText} onChange={this.onInputChange} />
+                </form>
             </div>
 
         );

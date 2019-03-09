@@ -1,0 +1,41 @@
+.cipher-tile {
+    text-align: center;
+    height: 300px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    width: 70%;
+    display: grid;
+    grid-template-rows: 4fr 3fr 3fr;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.cipher-header {
+    font-size: 1.3em;
+    background: #FFC107;
+    color: White;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cipher-container-input {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cipher-output{
+    height:30%;
+    text-align: center;
+    bordeR:1px solid rgb(202, 193, 193);
+    width:60%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cipher-input:focus{
+    outline:none;
+}

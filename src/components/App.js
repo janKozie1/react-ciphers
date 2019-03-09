@@ -2,33 +2,48 @@ import React, { Component } from 'react';
 import * as algorithms from '../algorithms/algorithms'
 import '../styles/app.css'
 import Header from './Header'
+import CipherTile from './CipherTile'
 
 class App extends Component {
     state = {
-        userText:''
+        tempText:'',
+        ciphers:[]
     }
     onInputChange = (e) => {
         this.setState({
-            userText:e.target.value
+            tempText:e.target.value
         })
     }
     onFormSubmit = (e) => {
         e.preventDefault();
-        alert(this.state.userText)
+        this.setState({
+            accepted:this.state.tempText
+        })
     }
     componentDidMount() {
+        let temp = [];
         for (let data in algorithms) {
-            console.log(data)
-            console.log(algorithms[data])
+            temp.push(algorithms[data]);
         }
+        console.log(temp)
+        this.setState({
+            ciphers:[...temp]
+        })
     }
     render() {
         return (
             <div className='app'>
                 <Header />
-                <form className='input-main' onSubmit={this.onFormSubmit}>
-                    <input type='text' id='input-main-user' value={this.state.userText} onChange={this.onInputChange} />
+                <form  autoComplete="off" className='input-main' onSubmit={this.onFormSubmit}>
+                    <input type='text' id='input-main-user' value={this.state.tempText} onChange={this.onInputChange} />
                 </form>
+                <div className='cipher-container'>
+                    {
+                        this.state.ciphers.map((e)=>{
+                             return <CipherTile cipher={e} userInput={this.state.accepted} key={e.name}/>
+                        })
+                    }
+                </div>
             </div>
 
         );

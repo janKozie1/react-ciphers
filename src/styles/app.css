@@ -32,7 +32,7 @@
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1em;
-    padding:20px 0px;
+    padding:40px 0px;
     justify-items: center;
     grid-row-gap:4em;
 }

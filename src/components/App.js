@@ -25,7 +25,6 @@ class App extends Component {
         for (let data in algorithms) {
             temp.push(algorithms[data]);
         }
-        console.log(temp)
         this.setState({
             ciphers:[...temp]
         })

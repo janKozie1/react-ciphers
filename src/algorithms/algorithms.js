@@ -2,12 +2,13 @@ import { Settings } from '../settings'
 
 export let caesar = {
     name: 'Caesar cipher',
-    desc: 'Simples coding algorithm',
+    desc: 'One of the first ciphers known to men',
     config: {
         shift: Settings.alphabet.length / 2,
         defaultAlphabet: Settings.alphabet
     },
-    algorithm: (input, { shift, defaultAlphabet }) => { 
+    algorithm(input) {
+        let { defaultAlphabet,shift } = this.config
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
             return ~temp ? defaultAlphabet[(temp + shift) % defaultAlphabet.length] : letter;

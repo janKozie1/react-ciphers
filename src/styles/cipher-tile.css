@@ -14,9 +14,58 @@
     background: #FFC107;
     color: White;
     height: 100%;
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
     align-items: center;
-    justify-content: center;
+}
+
+.cipher-more {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.cipher-button-more {
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    color: white;
+    font-weight: bolder;
+    box-sizing: border-box;
+    position: relative;
+    z-index:1;
+    display:block;
+}
+
+.cipher-button-more:hover {
+    color: black;
+    font-weight: bolder;
+    box-sizing: border-box;
+    transition: color
+}
+
+.cipher-button-more:hover::after {
+    content: '';
+    background: white;
+    animation: more-animation 0.3s ease-out;
+    animation-fill-mode: forwards;
+    position: absolute;
+    display:block;
+    top:0px;
+    right:0px;
+    transform: rotate(90deg);
+    border-bottom-right-radius:100%;
+    z-index:-1;
+}
+
+@keyframes more-animation {
+    from {
+        width: 0px;
+        height: 0px;
+    }
+    to {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 .cipher-container-input {
@@ -26,16 +75,16 @@
     justify-content: center;
 }
 
-.cipher-output{
-    height:30%;
+.cipher-output {
+    height: 30%;
     text-align: center;
-    bordeR:1px solid rgb(202, 193, 193);
-    width:60%;
-    display:flex;
+    bordeR: 1px solid rgb(202, 193, 193);
+    width: 60%;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.cipher-input:focus{
-    outline:none;
+.cipher-input:focus {
+    outline: none;
 }

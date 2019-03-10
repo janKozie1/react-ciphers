@@ -3,11 +3,18 @@ import '../styles/cipher-tile.css'
 
 class cipherTile extends Component {
     render() {
-        let { name, desc} = this.props.cipher
+        let { name, desc } = this.props.cipher
         let { userInput } = this.props
         return (
             <div className='cipher-tile'>
-                <h4 className='cipher-header'>{name}</h4>
+                <div className='cipher-header'>
+                    <div className='cipher-more'>
+                        <button className='cipher-button-more'>
+                            ?
+                        </button>
+                    </div>
+                    <h4>{name}</h4>
+                </div>
                 <p className='cipher-desc'>{desc}</p>
                 <div className='cipher-container-input'>
                     <p className='cipher-output'>{userInput ? this.props.cipher.algorithm(userInput) : null}</p>

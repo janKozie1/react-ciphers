@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import settingsImage from '../images/settings.png'
+import settingsImageWhite from '../images/settings.svg'
+import settingsImageBlack from '../images/settings_black.svg';
+import ConfigField from './ConfigField'
+
 import '../styles/cipher-tile.css'
 
 class cipherTile extends Component {
     state = { settingsOpen: false }
-    onButtonClick = () => {
-        this.setState({
-            buttonClicked: !this.state.buttonClicked
-        })
-    }
 
     handleSettingsClick = () => {
         this.setState({
@@ -16,29 +14,36 @@ class cipherTile extends Component {
         })
     }
     render() {
-        let { name, desc } = this.props.cipher
+
+        let { name, desc, config } = this.props.cipher
         let { userInput } = this.props
-
         return (
-            this.state.settingsOpen ?
-                (<div className='cipher-tile-settings'>
-
-                </div>)
-                :
-
-                (<div className='cipher-tile'>
+            <div className='cipher-tile'>
+                <div className='cipher-header'>
                     <div className='cipher-settings'>
-                        <img src={settingsImage} onClick={this.handleSettingsClick} className='cipher-settings-image' alt='open settings' />
+                        <img src={settingsImageWhite} onClick={this.handleSettingsClick} className='cipher-settings-image' alt='open settings' />
                     </div>
-                    <div className='cipher-header'>
+                    <h4>{name}</h4>
+                </div>
+                {
+                    !this.state.settingsOpen ? 
+                        <div className='cipher-proper-container'>
+                            <p className='cipher-desc'>{desc}</p>
+                            <div className='cipher-container-output'>
+                                <input className='cipher-output' value={userInput ? this.props.cipher.algorithm(userInput) : ''} disabled />
+                            </div>
+                        </div>
+                        :
+                        <div className='cipher-proper-container'>
+                            {
+                                Object.keys(config).map((e,i)=>{
+                                    return <ConfigField key={i} name={e} value={config[e]}/>
+                                })
+                            }
+                        </div>
+                }
 
-                        <h4>{name}</h4>
-                    </div>
-                    <p className='cipher-desc'>{desc}</p>
-                    <div className='cipher-container-output'>
-                        <input className='cipher-output' value={userInput ? this.props.cipher.algorithm(userInput) : ''} disabled />
-                    </div>
-                </div>)
+            </div>
         );
     }
 }

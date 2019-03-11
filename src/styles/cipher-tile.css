@@ -4,10 +4,11 @@
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     width: 70%;
     display: grid;
-    grid-template-rows: 4fr 3fr 3fr;
+    grid-template-rows: 4fr 6fr;
     align-items: center;
     border-radius: 3px;
     position: relative;
+    background:white;
 }
 
 .cipher-tile{
@@ -16,8 +17,8 @@
 }
 .cipher-tile-settings{
     display:flex;
+  
 }
-
 
 .cipher-header {
     font-size: 1.3em;
@@ -28,16 +29,14 @@
     grid-template-rows: 1fr 3fr 1fr;
     align-items: center;
 }
-.cipher-header > *{
-    grid-row: 2/3;
-}
+
 
 .cipher-settings {
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
-    position: absolute;
-    top:0;
+    
+   
 }
 
 .cipher-settings-image {
@@ -52,82 +51,22 @@
     transition: transform 0.3s;
 }
 
-/* .cipher-button-more, .cipher-button-more-clicked  {
-    padding: 5px 10px;
-    border: none;
-    background: none;
-    color: white;
-    font-weight: bolder;
-    box-sizing: border-box;
-    position: relative;
-    z-index:1;
-    display:block;
-    outline: none;
+.cipher-proper-container{
+    display:grid;
+    height:100%;
+    grid-template-rows:1fr 1fr;
+    align-items: center;
 }
-
-.cipher-button-more:hover {
-    color: black;
-    font-weight: bolder;
-    box-sizing: border-box;
-    transition: color
-}
-
-.cipher-button-more:hover::after {
-    content: '';
-    background: white;
-    animation: more-animation 0.3s ease-out;
-    animation-fill-mode: forwards;
-    position: absolute;
-    display:block;
-    top:0px;
-    right:0px;
-    transform: rotate(90deg);
-    border-bottom-right-radius:100%;
-    z-index:-1;
-}
-
-/* .cipher-button-more-clicked::after{
-    content: '';
-    background: white;
-    animation: more-animation-clicked 0.3s ease-out;
-    animation-fill-mode: forwards;
-    position: absolute;
-    display:block;
-    top:0px;
-    right:0px;
-    transform: rotate(90deg);
-    border-bottom-right-radius:100%;
-    z-index:-1;
-} */
-
-@keyframes more-animation {
-    from {
-        width: 0px;
-        height: 0px;
-    }
-    to {
-        width: 30px;
-        height: 30px;
-    }
-}
-
-/* 
-@keyframes more-animation-clicked {
-    from {
-        width: 0px;
-        height: 0px;
-    }
-    to {
-        width: 1000px;
-        height: 1000px;
-    }
-} */
 
 .cipher-desc {
     padding: 0px 10%;
     font-size: 0.8em;
     text-align: center;
     color: rgb(56, 54, 54);
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
 }
 
 .cipher-container-output {

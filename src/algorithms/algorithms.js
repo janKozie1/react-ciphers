@@ -2,7 +2,7 @@ import { Settings } from '../settings'
 
 export let caesar = {
     name: 'Caesar cipher',
-    desc: 'One of the first ciphers known to men, used in ancient Rome by Julius Caesar to send military orders',
+    desc: 'One of the first ciphers known to men, used in ancient Rome by Julius Caesar to send military orders.',
     config: {
         shift: Settings.alphabet.length / 2,
         defaultAlphabet: Settings.alphabet
@@ -18,7 +18,7 @@ export let caesar = {
 
 export let atbash = {
     name: 'Atbash cipher',
-    desc: 'Originally made for Hebrew alphabet encryption, but works with any alphabet',
+    desc: 'Originally made for Hebrew alphabet encryption, but works with any alphabet.',
     config: {
         defaultAlphabet: Settings.alphabet
     },
@@ -33,7 +33,7 @@ export let atbash = {
 
 export let railFence = {
     name: 'Rail-fence coding',
-    desc: '16th century cipher',
+    desc: 'Named after the way you cipher messages, useful for longer texts.',
     config: {
         shift: 3
     },

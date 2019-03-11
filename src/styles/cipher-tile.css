@@ -1,4 +1,4 @@
-.cipher-tile {
+.cipher-tile,.cipher-tile-settings {
     text-align: center;
     height: 300px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -7,9 +7,17 @@
     grid-template-rows: 4fr 3fr 3fr;
     align-items: center;
     border-radius: 3px;
-    overflow: hidden;
-   
+    position: relative;
 }
+
+.cipher-tile{
+    display:grid;
+    
+}
+.cipher-tile-settings{
+    display:flex;
+}
+
 
 .cipher-header {
     font-size: 1.3em;
@@ -20,13 +28,31 @@
     grid-template-rows: 1fr 3fr 1fr;
     align-items: center;
 }
-
-.cipher-more {
-    display: flex;
-    flex-direction: row-reverse;
+.cipher-header > *{
+    grid-row: 2/3;
 }
 
-.cipher-button-more, .cipher-button-more-clicked  {
+.cipher-settings {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    position: absolute;
+    top:0;
+}
+
+.cipher-settings-image {
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+    width: 20px;
+    height: 20px;
+}
+
+.cipher-settings-image:hover {
+    transform: rotate(30deg);
+    transition: transform 0.3s;
+}
+
+/* .cipher-button-more, .cipher-button-more-clicked  {
     padding: 5px 10px;
     border: none;
     background: none;
@@ -74,8 +100,6 @@
     z-index:-1;
 } */
 
-
-
 @keyframes more-animation {
     from {
         width: 0px;
@@ -86,6 +110,7 @@
         height: 30px;
     }
 }
+
 /* 
 @keyframes more-animation-clicked {
     from {
@@ -98,11 +123,11 @@
     }
 } */
 
-.cipher-desc{
-    padding:0px 10%;
-    font-size:0.8em;
+.cipher-desc {
+    padding: 0px 10%;
+    font-size: 0.8em;
     text-align: center;
-    color:rgb(56, 54, 54);
+    color: rgb(56, 54, 54);
 }
 
 .cipher-container-output {

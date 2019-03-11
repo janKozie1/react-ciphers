@@ -1,34 +1,44 @@
 import React, { Component } from 'react';
+import settingsImage from '../images/settings.png'
 import '../styles/cipher-tile.css'
 
 class cipherTile extends Component {
-    state = { buttonClicked: false }
+    state = { settingsOpen: false }
     onButtonClick = () => {
         this.setState({
-            buttonClicked:!this.state.buttonClicked
+            buttonClicked: !this.state.buttonClicked
+        })
+    }
+
+    handleSettingsClick = () => {
+        this.setState({
+            settingsOpen: !this.state.settingsOpen
         })
     }
     render() {
         let { name, desc } = this.props.cipher
         let { userInput } = this.props
-        //let buttonClass = this.state.buttonClicked ? 'cipher-button-more-clicked' : 'cipher-button-more'
 
         return (
-            <div className='cipher-tile'>
-                <div className='cipher-header'>
-                    <div className='cipher-more'>
-                        <button onClick={this.onButtonClick} className='cipher-button-more'>
-                            ?
-                        </button>
-                    </div>
-                    <h4>{name}</h4>
-                </div>
-                <p className='cipher-desc'>{desc}</p>
-                <div className='cipher-container-output'>
-                    <input className='cipher-output' value={userInput ? this.props.cipher.algorithm(userInput) : ''} disabled/>
-                </div>
+            this.state.settingsOpen ?
+                (<div className='cipher-tile-settings'>
 
-            </div>
+                </div>)
+                :
+
+                (<div className='cipher-tile'>
+                    <div className='cipher-settings'>
+                        <img src={settingsImage} onClick={this.handleSettingsClick} className='cipher-settings-image' alt='open settings' />
+                    </div>
+                    <div className='cipher-header'>
+
+                        <h4>{name}</h4>
+                    </div>
+                    <p className='cipher-desc'>{desc}</p>
+                    <div className='cipher-container-output'>
+                        <input className='cipher-output' value={userInput ? this.props.cipher.algorithm(userInput) : ''} disabled />
+                    </div>
+                </div>)
         );
     }
 }

@@ -7,13 +7,19 @@ export let caesar = {
         shift: Settings.alphabet.length / 2,
         defaultAlphabet: Settings.alphabet
     },
-    algorithm(input) {
+    encAlgorithm(input) {
         let { defaultAlphabet, shift } = this.config
-        console.log(this.config);
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
-            console.log(temp + shift, (temp + shift) % defaultAlphabet.length)
+            console.log(temp,shift)
             return ~temp ? defaultAlphabet[(temp + shift) % defaultAlphabet.length] : letter;
+        }).join("")
+    },
+    decAlgorithm(input) {
+        let { defaultAlphabet, shift } = this.config
+        return input.split("").map(letter => {
+            let temp = defaultAlphabet.indexOf(letter);
+            return ~temp ? defaultAlphabet[((temp - (shift%defaultAlphabet.length))) % defaultAlphabet.length] : letter;
         }).join("")
     }
 }
@@ -24,13 +30,15 @@ export let atbash = {
     config: {
         defaultAlphabet: Settings.alphabet
     },
-    algorithm(input) {
+    encAlgorithm(input) {
         let { defaultAlphabet } = this.config
-        console.log(defaultAlphabet)
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
             return ~temp ? defaultAlphabet[defaultAlphabet.length - 1 - temp] : letter;
         }).join("")
+    },
+    decAlgorithm(input) {
+        return this.encAlgorithm(input)
     }
 }
 
@@ -40,7 +48,7 @@ export let railFence = {
     config: {
         shift: 3
     },
-    algorithm(input) {
+    encAlgorithm(input) {
         let { shift } = this.config
         if (shift === 1)
             return input;
@@ -53,6 +61,9 @@ export let railFence = {
             counter += dir;
         }
         return temp.join("");
+    },
+    decAlgorithm(input) {
+        return input
     }
 }
 

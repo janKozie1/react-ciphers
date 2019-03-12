@@ -25,10 +25,10 @@ class cipherTile extends Component {
     }
     render() {
         let { name, desc, config } = this.state.cipher
-        let { userInput } = this.props
+        let { userInput, mode } = this.props
         return (
             <div className='cipher-tile'>
-                <div className={`cipher-header ${this.props.mode ? 'encryption' : 'decryption'}`}>
+                <div className={`cipher-header ${mode ? 'encryption' : 'decryption'}`}>
                     <div className='cipher-settings'>
                         <img src={settingsImageWhite} onClick={this.handleSettingsClick} className='cipher-settings-image' alt='open settings' />
                     </div>
@@ -39,7 +39,7 @@ class cipherTile extends Component {
                         <div className='cipher-proper-container'>
                             <p className='cipher-desc'>{desc}</p>
                             <div className='cipher-container-output'>
-                                <input className='cipher-output' value={userInput ? this.state.cipher.algorithm(userInput) : ''} disabled />
+                                <input className='cipher-output' value={userInput ? (mode ? this.state.cipher.encAlgorithm(userInput) : this.state.cipher.decAlgorithm(userInput)) : ''} disabled />
                             </div>
                         </div>
                         :

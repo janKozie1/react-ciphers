@@ -1,24 +1,28 @@
-.header{
-    display:flex;
+.header {
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding:20px 0;
+    padding: 20px 0;
     text-align: center;
     user-select: none;
 }
-.header > *{
-    padding:20px;
+
+.header>* {
+    padding: 20px;
 }
-.header-span{
+
+.header-span {
     cursor: pointer;
     font-variant-numeric: tabular-nums;
 }
-.encryption{
-    color:#FFC107;
+
+.encryption {
+    color: #FFC107;
     transition: color 0.5s ease-out;
 }
-.decryption{
-    color:#2196F3;
+
+.decryption {
+    color: #2196F3;
     transition: color 0.5s ease-in;
 }

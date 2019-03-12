@@ -10,7 +10,7 @@ class ConfigField extends Component {
     handleInputChange = async (e) => {
         let { value } = e.target
         await this.setState({
-            value: configValidtaion[this.state.name](value) ? value : this.state.value
+            value: configValidtaion[this.state.name](value,'check') ? configValidtaion[this.state.name](value,'parse') : this.state.value
         })
         this.props.onChange(this.state.name, this.state.value)
     }

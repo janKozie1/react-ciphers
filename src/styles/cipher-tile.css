@@ -1,4 +1,4 @@
-.cipher-tile,.cipher-tile-settings {
+.cipher-tile, .cipher-tile-settings {
     text-align: center;
     height: 300px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -8,21 +8,20 @@
     align-items: center;
     border-radius: 3px;
     position: relative;
-    background:white;
+    background: white;
 }
 
-.cipher-tile{
-    display:grid;
-    
+.cipher-tile {
+    display: grid;
 }
-.cipher-tile-settings{
-    display:flex;
-  
+
+.cipher-tile-settings {
+    display: flex;
 }
 
 .cipher-header {
     font-size: 1.3em;
-    background: #FFC107;
+
     color: White;
     height: 100%;
     display: grid;
@@ -30,13 +29,20 @@
     align-items: center;
 }
 
+.cipher-header.encryption {
+    background: #FFC107;
+    transition:background 0.5s ease-out;
+}
+
+.cipher-header.decryption {
+    background: #2196F3;
+    transition:background 0.5s ease-in;
+}
 
 .cipher-settings {
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
-    
-   
 }
 
 .cipher-settings-image {
@@ -51,10 +57,10 @@
     transition: transform 0.3s;
 }
 
-.cipher-proper-container{
-    display:grid;
-    height:100%;
-    grid-template-rows:1fr 1fr;
+.cipher-proper-container {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 1fr 1fr;
     align-items: center;
 }
 
@@ -63,9 +69,9 @@
     font-size: 0.8em;
     text-align: center;
     color: rgb(56, 54, 54);
-    height:100%;
-    display:flex;
-    align-items:center;
+    height: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
 

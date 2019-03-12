@@ -12,7 +12,7 @@ export let caesar = {
         console.log(this.config);
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
-            console.log(temp+shift,(temp + shift) % defaultAlphabet.length)
+            console.log(temp + shift, (temp + shift) % defaultAlphabet.length)
             return ~temp ? defaultAlphabet[(temp + shift) % defaultAlphabet.length] : letter;
         }).join("")
     }
@@ -26,7 +26,7 @@ export let atbash = {
     },
     algorithm(input) {
         let { defaultAlphabet } = this.config
-        
+        console.log(defaultAlphabet)
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
             return ~temp ? defaultAlphabet[defaultAlphabet.length - 1 - temp] : letter;
@@ -42,12 +42,14 @@ export let railFence = {
     },
     algorithm(input) {
         let { shift } = this.config
+        if (shift === 1)
+            return input;
         let temp = new Array((shift)).fill('');
         let dir = 1;
         let counter = 0;
         for (let letter of input) {
             temp[counter] += letter;
-            dir = counter === 0 ? 1 : counter === shift-1 ? dir = -1 : dir;
+            dir = counter === 0 ? 1 : counter === shift - 1 ? dir = -1 : dir;
             counter += dir;
         }
         return temp.join("");

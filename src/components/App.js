@@ -6,18 +6,24 @@ import CipherTile from './CipherTile'
 
 class App extends Component {
     state = {
-        tempText:'',
-        ciphers:[]
+        tempText: '',
+        ciphers: [],
+        mode: true
+    }
+    onHeaderClick = () => {
+        this.setState({
+            mode: !this.state.mode
+        })
     }
     onInputChange = (e) => {
         this.setState({
-            tempText:e.target.value
+            tempText: e.target.value
         })
     }
     onFormSubmit = (e) => {
         e.preventDefault();
         this.setState({
-            accepted:this.state.tempText
+            accepted: this.state.tempText
         })
     }
     componentDidMount() {
@@ -26,20 +32,20 @@ class App extends Component {
             temp.push(algorithms[data]);
         }
         this.setState({
-            ciphers:[...temp]
+            ciphers: [...temp]
         })
     }
     render() {
         return (
             <div className='app'>
-                <Header />
-                <form  autoComplete="off" className='input-main' onSubmit={this.onFormSubmit}>
-                    <input type='text' id='input-main-user' value={this.state.tempText} onChange={this.onInputChange} />
+                <Header onClick={this.onHeaderClick} mode={this.state.mode} />
+                <form autoComplete="off" className='input-main' onSubmit={this.onFormSubmit}>
+                    <input type='text' className={`input-main-user ${this.state.mode ? 'encryption' : 'decryption'}`} value={this.state.tempText} onChange={this.onInputChange} />
                 </form>
                 <div className='cipher-container'>
                     {
-                        this.state.ciphers.map((e)=>{
-                             return <CipherTile cipher={e} userInput={this.state.accepted} key={e.name}/>
+                        this.state.ciphers.map((e) => {
+                            return <CipherTile cipher={e} mode={this.state.mode} userInput={this.state.accepted} key={e.name} />
                         })
                     }
                 </div>

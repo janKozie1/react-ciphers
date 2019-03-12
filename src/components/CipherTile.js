@@ -18,11 +18,6 @@ class cipherTile extends Component {
     }
     handleSettingsChange = (key, value) => {
         let temp = this.state.cipher;
-        if (key === 'defaultAlphabet') {
-            value = value.split(",");
-        } else if (key === 'shift') {
-            value = parseInt(value)
-        }
         temp.config[key] = value;
         this.setState({
             cipher: temp
@@ -33,7 +28,7 @@ class cipherTile extends Component {
         let { userInput } = this.props
         return (
             <div className='cipher-tile'>
-                <div className='cipher-header'>
+                <div className={`cipher-header ${this.props.mode ? 'encryption' : 'decryption'}`}>
                     <div className='cipher-settings'>
                         <img src={settingsImageWhite} onClick={this.handleSettingsClick} className='cipher-settings-image' alt='open settings' />
                     </div>

@@ -9,8 +9,10 @@ export let caesar = {
     },
     algorithm(input) {
         let { defaultAlphabet, shift } = this.config
+        console.log(this.config);
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
+            console.log(temp+shift,(temp + shift) % defaultAlphabet.length)
             return ~temp ? defaultAlphabet[(temp + shift) % defaultAlphabet.length] : letter;
         }).join("")
     }
@@ -24,6 +26,7 @@ export let atbash = {
     },
     algorithm(input) {
         let { defaultAlphabet } = this.config
+        
         return input.split("").map(letter => {
             let temp = defaultAlphabet.indexOf(letter);
             return ~temp ? defaultAlphabet[defaultAlphabet.length - 1 - temp] : letter;

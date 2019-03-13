@@ -60,7 +60,8 @@ export let vigenere = {
         let { defaultAlphabet, keyword } = this.config
         let counter = 0;
         return input.split("").map(e => {
-            return e && e !== " " ? defaultAlphabet[(defaultAlphabet.indexOf(e) + defaultAlphabet.indexOf(keyword[(counter++) % keyword.length])) % defaultAlphabet.length] : e
+            
+            return e && e !== " " && ~defaultAlphabet.indexOf(keyword[counter]) ? defaultAlphabet[(defaultAlphabet.indexOf(e) + defaultAlphabet.indexOf(keyword[(counter++) % keyword.length])) % defaultAlphabet.length] : e
         }).join("")
     },
     decAlgorithm(input) {
@@ -68,8 +69,8 @@ export let vigenere = {
         let counter = 0;
         return input.split("").map(e => {
             let index = defaultAlphabet.indexOf(e)
-            if (~index) {
-                console.log({ index, e })
+            if (~index && ~defaultAlphabet.indexOf(keyword[counter])) {
+                console.log(defaultAlphabet)
                 index = (index - defaultAlphabet.indexOf(keyword[(counter++) % keyword.length])) % defaultAlphabet.length;
                 return index < 0 ? defaultAlphabet[defaultAlphabet.length + index] : defaultAlphabet[index]
             }
